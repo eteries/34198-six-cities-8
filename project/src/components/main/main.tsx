@@ -2,7 +2,7 @@ import PlaceCard from '../place-card/place-card';
 
 type mainProps = {
   offersNum: number
-}
+};
 
 export default function Main(props: mainProps): JSX.Element {
   const { offersNum: OFFERS_NUM } = props;
