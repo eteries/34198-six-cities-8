@@ -1,4 +1,4 @@
-export default function PlaceCard(): JSX.Element {
+export default function OfferCard(): JSX.Element {
   return (
     <article className="cities__place-card place-card">
       1

@@ -1,4 +1,4 @@
-import PlaceCard from '../place-card/place-card';
+import OfferCard from '../offer-card/offer-card';
 
 type mainProps = {
   offersNum: number
@@ -99,7 +99,7 @@ export default function Main(props: mainProps): JSX.Element {
                 {new Array(OFFERS_NUM)
                   .fill(null)
                   .map((item, index) => index)
-                  .map((id) => <PlaceCard key={id} />)
+                  .map((id) => <OfferCard key={id} />)
                 }
               </div>
             </section>
