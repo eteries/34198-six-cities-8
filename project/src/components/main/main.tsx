@@ -1,8 +1,12 @@
 import PlaceCard from '../place-card/place-card';
 
-const OFFERS_NUM = 5;
+type mainProps = {
+  offersNum: number
+}
 
-export default function Main(): JSX.Element {
+export default function Main(props: mainProps): JSX.Element {
+  const { offersNum: OFFERS_NUM } = props;
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
