@@ -4,7 +4,7 @@ type mainProps = {
   offersNum: number
 };
 
-export default function Main(props: mainProps): JSX.Element {
+function Main(props: mainProps): JSX.Element {
   const { offersNum: OFFERS_NUM } = props;
 
   return (
@@ -99,8 +99,7 @@ export default function Main(props: mainProps): JSX.Element {
                 {new Array(OFFERS_NUM)
                   .fill(null)
                   .map((item, index) => index)
-                  .map((id) => <OfferCard key={id} />)
-                }
+                  .map((id) => <OfferCard key={id} />)}
               </div>
             </section>
             <div className="cities__right-section">
@@ -112,3 +111,5 @@ export default function Main(props: mainProps): JSX.Element {
     </div>
   );
 }
+
+export default Main;
