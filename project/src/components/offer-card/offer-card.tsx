@@ -1,7 +1,6 @@
 function OfferCard(): JSX.Element {
   return (
     <article className="cities__place-card place-card">
-      1
       <div className="place-card__mark">
         <span>Premium</span>
       </div>

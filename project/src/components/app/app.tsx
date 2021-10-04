@@ -4,8 +4,8 @@ type appProps = {
   offersNum: number
 };
 
-function App(props: appProps): JSX.Element {
-  return <Main offersNum={ props.offersNum} />;
+function App({offersNum}: appProps): JSX.Element {
+  return <Main offersNum={offersNum} />;
 }
 
 export default App;

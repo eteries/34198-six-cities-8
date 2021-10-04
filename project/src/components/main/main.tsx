@@ -4,9 +4,7 @@ type mainProps = {
   offersNum: number
 };
 
-function Main(props: mainProps): JSX.Element {
-  const { offersNum: OFFERS_NUM } = props;
-
+function Main({offersNum}: mainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -96,7 +94,7 @@ function Main(props: mainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {new Array(OFFERS_NUM)
+                {new Array(offersNum)
                   .fill(null)
                   .map((item, index) => index)
                   .map((id) => <OfferCard key={id} />)}
