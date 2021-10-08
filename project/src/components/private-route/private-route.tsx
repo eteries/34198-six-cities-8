@@ -1,15 +1,16 @@
-import { Redirect } from 'react-router-dom';
+import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { Routes } from '../../constants';
 
-type PrivateRouteProps = {
-  isAuthorised: boolean,
-  children: JSX.Element
+type PrivateRouteProps = RouteProps & {
+  isAuthorised: boolean
 }
 
-function PrivateRoute({isAuthorised, children}: PrivateRouteProps): JSX.Element {
-  return (isAuthorised
+function PrivateRoute({isAuthorised, exact, path, children}: PrivateRouteProps): JSX.Element {
+  return <Route exact={exact} path={path}>
+    {isAuthorised
     ? children
-    : <Redirect to={Routes.Login} />);
+    : <Redirect to={Routes.Login} />}
+  </Route>
 }
 
 export default PrivateRoute;
