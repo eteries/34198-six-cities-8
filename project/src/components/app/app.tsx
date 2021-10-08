@@ -5,6 +5,7 @@ import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Offer from '../offer/offer';
 import { Routes } from '../../constants';
+import PrivateRoute from '../private-route/private-route';
 
 type appProps = {
   offersNum: number
@@ -18,7 +19,9 @@ function App({offersNum}: appProps): JSX.Element {
           <Login />
         </Route>
         <Route exact path={Routes.Favorites}>
-          <Favorites />
+          <PrivateRoute isAuthorised={false}>
+            <Favorites />
+          </PrivateRoute>
         </Route>
         <Route exact path={`${Routes.Offer}:id`}>
           <Offer />
