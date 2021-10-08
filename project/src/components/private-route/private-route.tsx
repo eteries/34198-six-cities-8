@@ -6,11 +6,12 @@ type PrivateRouteProps = RouteProps & {
 }
 
 function PrivateRoute({isAuthorised, exact, path, children}: PrivateRouteProps): JSX.Element {
-  return <Route exact={exact} path={path}>
-    {isAuthorised
-    ? children
-    : <Redirect to={Routes.Login} />}
-  </Route>
+  return (
+    <Route exact={exact} path={path}>
+      {isAuthorised
+        ? children
+        : <Redirect to={Routes.Login} />}
+    </Route>);
 }
 
 export default PrivateRoute;

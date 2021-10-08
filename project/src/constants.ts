@@ -2,5 +2,5 @@ export const enum Routes {
   Root = '/',
   Login = '/login',
   Favorites = '/favorites',
-  Offer = '/offer'
+  OfferId = '/offer:id'
 }

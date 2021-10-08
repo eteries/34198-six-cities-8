@@ -23,7 +23,7 @@ function App({offersNum}: appProps): JSX.Element {
             <Favorites />
           </PrivateRoute>
         </Route>
-        <Route exact path={`${Routes.Offer}:id`}>
+        <Route exact path={Routes.OfferId}>
           <Offer />
         </Route>
         <Route exact path={Routes.Root}>
