@@ -64,10 +64,10 @@ function NotFound(): JSX.Element {
         </div>
         <div className="cities">
           <div className="cities__places-container cities__places-container--empty container">
-            <section className="cities__no-places">
+            <section>
               <div className="cities__status-wrapper tabs__content">
                 <b className="cities__status">404 (Not Found)</b>
-                <p className="cities__status-description">The page you are looking for is not found. It might has been removed or never existed. You might start by choosing one of our <b>6 cities</b>.</p>
+                <p className="cities__status-description">The page you are looking for is not found. It might has been removed or never existed. You might start by choosing one of our <b>6 cities</b> at the top.</p>
               </div>
             </section>
           </div>
