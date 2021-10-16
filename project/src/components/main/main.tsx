@@ -1,12 +1,14 @@
 import OfferCard from '../offer-card/offer-card';
 import Logo from '../Logo';
 import UserMenu from '../user-menu/user-menu';
+import { Offer } from '../../types/offer';
 
 type mainProps = {
-  offersNum: number
+  offersNum: number,
+  offers: Offer[]
 };
 
-function Main({offersNum}: mainProps): JSX.Element {
+function Main({offersNum, offers}: mainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -79,10 +81,9 @@ function Main({offersNum}: mainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {new Array(offersNum)
-                  .fill(null)
-                  .map((item, index) => index)
-                  .map((id) => <OfferCard key={id} />)}
+                {offers
+                  .slice(0, offersNum)
+                  .map((offer) => <OfferCard key={offer.id} offer={offer} />)}
               </div>
             </section>
             <div className="cities__right-section">

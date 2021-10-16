@@ -1,18 +1,19 @@
 import { users } from './users';
 import { reviews } from './reviews';
 import { cities } from './cities';
+import { Offer } from '../types/offer';
 
-export const offers = [
+export const offers:Offer[] = [
   {
     id: 1,
-    title: 'Beautiful &amp; luxurious apartment at great location',
+    title: 'Beautiful & luxurious apartment at great location',
     description: 'A quiet cozy and picturesque that hides behind a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: true,
     previewImage: 'img/apartment-01.jpg',
     images: [
       'img/apartment-01.jpg',
       'img/apartment-02.jpg',
-      'img/apartment-03.jpg'
+      'img/apartment-03.jpg',
     ],
     price: 120,
     rating: 4.8,
@@ -29,28 +30,31 @@ export const offers = [
       'Kitchen',
       'Dishwasher',
       'Cable TV',
-      'Fridge'
+      'Fridge',
     ],
     rooms: 3,
     guests: 4,
     reviews: [
-      reviews[0]
+      reviews[0],
     ],
-    location: {},
-
+    location: {
+      latitude: 52.35514938496378,
+      longitude: 4.673877537499948,
+      zoom: 8,
+    },
   },
   {
     id: 2,
     title: 'Wood and stone place',
     description: 'A truly romantic studio in the center of Amsterdam. It\'s affordable for any tourist, but gives the same level of comfort as any luxurious place with stone and wood.',
-    isPremium: true,
-    previewImage: 'img/studio-01.jpg',
+    isPremium: false,
+    previewImage: 'img/studio-photos.jpg',
     images: [
-      'img/studio-photos.jpg',
+      'img/studio-01.jpg',
     ],
     price: 80,
     rating: 4.7,
-    type: 'private room',
+    type: 'studio',
     city: cities[0],
     host: users[0],
     equipment: [
@@ -61,12 +65,16 @@ export const offers = [
       'Air conditioner',
       'Kitchen',
       'Cable TV',
-      'Fridge'
+      'Fridge',
     ],
     rooms: 1,
     guests: 2,
     reviews: [],
-    location: {},
+    location: {
+      latitude: 52.35514938496378,
+      longitude: 4.673877537499948,
+      zoom: 8,
+    },
   },
   {
     id: 3,
@@ -77,7 +85,7 @@ export const offers = [
     images: [
       'img/apartment-01.jpg',
       'img/apartment-02.jpg',
-      'img/apartment-03.jpg'
+      'img/apartment-03.jpg',
     ],
     price: 180,
     rating: 4.2,
@@ -94,14 +102,18 @@ export const offers = [
       'Kitchen',
       'Dishwasher',
       'Cable TV',
-      'Fridge'
+      'Fridge',
     ],
     rooms: 4,
     guests: 5,
     reviews: [
-      reviews[0]
+      reviews[0],
     ],
-    location: {},
+    location: {
+      latitude: 52.35514938496378,
+      longitude: 4.673877537499948,
+      zoom: 8,
+    },
   },
   {
     id: 4,
@@ -110,7 +122,7 @@ export const offers = [
     isPremium: true,
     previewImage: 'img/room-small.jpg',
     images: [
-      'img/room.jpg'
+      'img/room.jpg',
     ],
     price: 150,
     rating: 5,
@@ -121,13 +133,17 @@ export const offers = [
       'Wi-Fi',
       'Coffee machine',
       'Kitchen',
-      'Fridge'
+      'Fridge',
     ],
     rooms: 4,
     guests: 5,
     reviews: [
-      reviews[0]
+      reviews[0],
     ],
-    location: {},
-  }
+    location: {
+      latitude: 52.35514938496378,
+      longitude: 4.673877537499948,
+      zoom: 8,
+    },
+  },
 ];
