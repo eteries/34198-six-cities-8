@@ -21,15 +21,15 @@ function App({offersNum, offers}: appProps): JSX.Element {
           <Login />
         </Route>
         <Route exact path={Routes.Favorites}>
-          <PrivateRoute isAuthorised={false}>
-            <Favorites />
+          <PrivateRoute isAuthorised>
+            <Favorites offers={offers} />
           </PrivateRoute>
         </Route>
         <Route exact path={Routes.OfferId}>
           <Offer />
         </Route>
         <Route exact path={Routes.Root}>
-          <Main offersNum={offersNum} offers={offers}/>
+          <Main offersNum={offersNum} offers={offers} />
         </Route>
         <Route path='*'>
           <NotFound />
