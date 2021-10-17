@@ -1,12 +1,14 @@
 import { Offer } from '../../types/offer';
 
 type OfferCardProps = {
-  offer: Offer
+  offer: Offer,
+  isActive: boolean,
+  handleClick: (id: number)=>void
 }
 
-function OfferCard({offer}: OfferCardProps): JSX.Element {
+function OfferCard({offer, isActive, handleClick}: OfferCardProps): JSX.Element {
   return (
-    <article className="cities__place-card place-card">
+    <article className="cities__place-card place-card" onClick={() => handleClick(offer.id)} style={isActive ? {outline: '1px solid red'} : {}}>
       {offer.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>

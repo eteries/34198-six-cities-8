@@ -48,9 +48,10 @@ export const offers:Offer[] = [
     title: 'Wood and stone place',
     description: 'A truly romantic studio in the center of Amsterdam. It\'s affordable for any tourist, but gives the same level of comfort as any luxurious place with stone and wood.',
     isPremium: false,
-    previewImage: 'img/studio-photos.jpg',
+    previewImage: 'img/apartment-02.jpg',
     images: [
       'img/studio-01.jpg',
+      'img/studio-photos.jpg',
     ],
     price: 80,
     rating: 4.7,
