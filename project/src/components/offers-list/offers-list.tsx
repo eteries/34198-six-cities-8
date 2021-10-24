@@ -15,7 +15,14 @@ function OffersList({offersNum, offers}: OfferListProps): JSX.Element {
     <div className="cities__places-list places__list tabs__content">
       {offers
         .slice(0, offersNum)
-        .map((offer) => <OfferCard key={offer.id} offer={offer} isActive={activeCardIndex === offer.id} handleClick={handleOnClick}/>)}
+        .map((offer) => (
+          <OfferCard key={offer.id}
+            offer={offer}
+            className="cities__place-card"
+            onClick={handleOnClick}
+            isActive={activeCardIndex === offer.id}
+          />
+        ))}
     </div>
   );
 }

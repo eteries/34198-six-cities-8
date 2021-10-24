@@ -1,6 +1,7 @@
 import Logo from '../Logo';
 import UserMenu from '../user-menu/user-menu';
 import { Offer } from '../../types/offer';
+import { Link } from 'react-router-dom';
 
 type FavoritesProps = {
   offers: Offer[]
@@ -74,7 +75,7 @@ function Favorites({offers}: FavoritesProps): JSX.Element {
                             </div>
                           </div>
                           <h2 className="place-card__name">
-                            <a href="#">{offer.title}</a>
+                            <Link to={`offer/${offer.id}`}>{offer.title}</Link>
                           </h2>
                           <p className="place-card__type">{offer.type}</p>
                         </div>

@@ -1,14 +1,23 @@
+import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
 
 type OfferCardProps = {
   offer: Offer,
-  isActive: boolean,
-  handleClick: (id: number)=>void
+  className?: string,
+  onClick?: (id: number) => void
+  isActive?: boolean
 }
 
-function OfferCard({offer, isActive, handleClick}: OfferCardProps): JSX.Element {
+function OfferCard({offer, className, onClick, isActive}: OfferCardProps): JSX.Element {
+
+  function handleClick(id: number) {
+    if (typeof onClick === 'function') {
+      onClick(id);
+    }
+  }
+
   return (
-    <article className="cities__place-card place-card" onClick={() => handleClick(offer.id)} style={isActive ? {outline: '1px solid red'} : {}}>
+    <article className={`${className} place-card`} onClick={() => handleClick(offer.id)} style={isActive ? {opacity: 0.6} : {}}>
       {offer.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -39,7 +48,7 @@ function OfferCard({offer, isActive, handleClick}: OfferCardProps): JSX.Element 
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{offer.title}</a>
+          <Link to={`offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type.toUpperCase()}</p>
       </div>
