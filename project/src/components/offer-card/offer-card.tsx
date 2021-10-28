@@ -9,7 +9,6 @@ type OfferCardProps = {
 }
 
 function OfferCard({offer, className, onClick, isActive}: OfferCardProps): JSX.Element {
-
   function handleClick(id: number) {
     if (typeof onClick === 'function') {
       onClick(id);

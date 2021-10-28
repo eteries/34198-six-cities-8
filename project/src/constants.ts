@@ -4,3 +4,5 @@ export const enum Routes {
   Favorites = '/favorites',
   OfferId = '/offer/:id'
 }
+
+export const IMG_PATH = 'img/';
