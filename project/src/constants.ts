@@ -5,4 +5,4 @@ export const enum Routes {
   OfferId = '/offer/:id'
 }
 
-export const IMG_PATH = 'img/';
+export const NEAREST_OFFERS_NUM = 3;

@@ -1,11 +1,14 @@
-import Logo from '../Logo';
-import UserMenu from '../user-menu/user-menu';
 import { useParams } from 'react-router-dom';
-import { offers } from '../../mocks/offers';
+
+import UserMenu from '../user-menu/user-menu';
 import NotFound from '../not-found/not-found';
-import OfferCard from '../offer-card/offer-card';
 import ReviewForm from '../review-form/review-form';
-import { IMG_PATH } from '../../constants';
+import NearestOffers from '../nearest-offers/nearest-offers';
+
+import Logo from '../Logo';
+import { offers } from '../../mocks/offers';
+import { convertRatingToPercent } from '../../utils/format-rating';
+import { NEAREST_OFFERS_NUM } from '../../constants';
 
 function Offer(): JSX.Element {
   const {id} = useParams<{id?: string}>();
@@ -34,7 +37,7 @@ function Offer(): JSX.Element {
             <div className="property__gallery">
               {offer.images.map((image) => (
                 <div className="property__image-wrapper" key={image}>
-                  <img className="property__image" src={`${IMG_PATH}${image}`} alt="Studio" />
+                  <img className="property__image" src={image} alt="Studio" />
                 </div>
               ))}
             </div>
@@ -59,7 +62,7 @@ function Offer(): JSX.Element {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${offer.rating*20}%`}} />
+                  <span style={{width: convertRatingToPercent(offer.rating)}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{offer.rating}</span>
@@ -121,7 +124,7 @@ function Offer(): JSX.Element {
                     <li className="reviews__item" key={review.id}>
                       <div className="reviews__user user">
                         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                          <img className="reviews__avatar user__avatar" src={`${IMG_PATH}${review.author.avatar}`} width="54" height="54" alt="Reviews avatar" />
+                          <img className="reviews__avatar user__avatar" src={review.author.avatar} width="54" height="54" alt="Reviews avatar" />
                         </div>
                         <span className="reviews__user-name">
                           {review.author.userName}
@@ -130,7 +133,7 @@ function Offer(): JSX.Element {
                       <div className="reviews__info">
                         <div className="reviews__rating rating">
                           <div className="reviews__stars rating__stars">
-                            <span style={{width: review.rating}} />
+                            <span style={{width: convertRatingToPercent(review.rating)}} />
                             <span className="visually-hidden">Rating</span>
                           </div>
                         </div>
@@ -148,14 +151,7 @@ function Offer(): JSX.Element {
           </div>
           <section className="property__map map" />
         </section>
-        <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <div className="near-places__list places__list">
-              {offers.map((place) => <OfferCard offer={place} className="near-places__card" key={place.id} />)}
-            </div>
-          </section>
-        </div>
+        <NearestOffers offers={offers} current={offer} max={NEAREST_OFFERS_NUM} />
       </main>
     </div>
   );

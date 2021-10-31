@@ -1,8 +1,9 @@
 import StarInput from '../star-input/star-input';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 function ReviewForm(): JSX.Element {
   const [rating, setRating] = useState('');
+  const [message, setMessage] = useState('');
 
   return (
     <form className="reviews__form form" action="#" method="post">
@@ -11,7 +12,14 @@ function ReviewForm(): JSX.Element {
         { rating ? `(${rating})` : ''}
         <StarInput name="rating" onChange={(value) => setRating(value)} />
       </div>
-      <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" />
+      <textarea
+        className="reviews__textarea form__textarea"
+        id="review"
+        name="review"
+        placeholder="Tell how was your stay, what you like and what can be improved"
+        value={message}
+        onChange={({target: {value}}: ChangeEvent<HTMLTextAreaElement>) => setMessage(value) }
+      />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and

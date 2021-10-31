@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+
 import { Offer } from '../../types/offer';
+import { convertRatingToPercent } from '../../utils/format-rating';
 
 type OfferCardProps = {
   offer: Offer,
@@ -9,7 +11,7 @@ type OfferCardProps = {
 }
 
 function OfferCard({offer, className, onClick, isActive}: OfferCardProps): JSX.Element {
-  function handleClick(id: number) {
+  function handleClick(id: number):void {
     if (typeof onClick === 'function') {
       onClick(id);
     }
@@ -42,12 +44,12 @@ function OfferCard({offer, className, onClick, isActive}: OfferCardProps): JSX.E
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${offer.rating*20}%}`}} />
+            <span style={{width: convertRatingToPercent(offer.rating)}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`offer/${offer.id}`}>{offer.title}</Link>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type.toUpperCase()}</p>
       </div>
