@@ -12,14 +12,14 @@ type GroupedOffers = {
 };
 
 function Favorites({offers}: FavoritesProps): JSX.Element {
-  const groupedOffers = offers.reduce((acc:GroupedOffers, current:Offer):GroupedOffers => {
+  const groupedOffers = offers.reduce((grouped:GroupedOffers, current:Offer):GroupedOffers => {
     const {city: {name: cityName}} = current;
 
-    if (!acc[cityName]) {
-      acc[cityName] = [];
+    if (!grouped[cityName]) {
+      grouped[cityName] = [];
     }
-    acc[cityName].push(current);
-    return acc;
+    grouped[cityName].push(current);
+    return grouped;
   }, {});
 
   return (
