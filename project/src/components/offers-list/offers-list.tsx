@@ -9,7 +9,7 @@ type OfferListProps = {
 
 function OffersList({offersNum, offers}: OfferListProps): JSX.Element {
   const [activeCardIndex, changeIndex] = useState(0);
-  const handleOnClick = (id: number) => changeIndex(id);
+  const handleMouseOver = (id: number) => changeIndex(id);
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -19,7 +19,7 @@ function OffersList({offersNum, offers}: OfferListProps): JSX.Element {
           <OfferCard key={offer.id}
             offer={offer}
             className="cities__place-card"
-            onClick={handleOnClick}
+            onMouseOver={handleMouseOver}
             isActive={activeCardIndex === offer.id}
           />
         ))}

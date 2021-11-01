@@ -1,4 +1,4 @@
-import { ratings } from './ratings';
+import { RATINGS } from './ratings';
 import { ChangeEvent } from 'react';
 
 type StarRatingProps = {
@@ -9,7 +9,7 @@ type StarRatingProps = {
 function StarInput({name, onChange}: StarRatingProps): JSX.Element {
   return (
     <>
-      {ratings
+      {RATINGS
         .sort((itemA, itemB) => itemB.id - itemA.id)
         .map(({id, label}) => (
           <>

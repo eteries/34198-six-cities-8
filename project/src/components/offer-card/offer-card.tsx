@@ -6,19 +6,19 @@ import { convertRatingToPercent } from '../../utils/format-rating';
 type OfferCardProps = {
   offer: Offer,
   className?: string,
-  onClick?: (id: number) => void
+  onMouseOver?: (id: number) => void
   isActive?: boolean
 }
 
-function OfferCard({offer, className, onClick, isActive}: OfferCardProps): JSX.Element {
-  function handleClick(id: number):void {
-    if (typeof onClick === 'function') {
-      onClick(id);
+function OfferCard({offer, className = '', onMouseOver, isActive}: OfferCardProps): JSX.Element {
+  function handleMouseOver(id: number):void {
+    if (typeof onMouseOver === 'function') {
+      onMouseOver(id);
     }
   }
 
   return (
-    <article className={`${className} place-card`} onClick={() => handleClick(offer.id)} style={isActive ? {opacity: 0.6} : {}}>
+    <article className={`${className} place-card`} onMouseOver={() => handleMouseOver(offer.id)} style={isActive ? {opacity: 0.6} : {}}>
       {offer.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>

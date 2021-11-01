@@ -1,6 +1,6 @@
 import { Rating } from '../../types/rating';
 
-export const ratings: Rating[] = [
+export const RATINGS: Rating[] = [
   {
     id: 1,
     label: 'terrible',

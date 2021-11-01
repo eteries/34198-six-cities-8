@@ -1,6 +1,6 @@
 import { users } from './users';
 import { reviews } from './reviews';
-import { cities } from './cities';
+import { CITIES } from './cities';
 import { Offer } from '../types/offer';
 
 export const offers:Offer[] = [
@@ -18,7 +18,7 @@ export const offers:Offer[] = [
     price: 120,
     rating: 4.8,
     type: 'apartment',
-    city: cities[0],
+    city: CITIES[0],
     host: users[0],
     equipment: [
       'Wi-Fi',
@@ -56,7 +56,7 @@ export const offers:Offer[] = [
     price: 80,
     rating: 4.7,
     type: 'studio',
-    city: cities[0],
+    city: CITIES[0],
     host: users[0],
     equipment: [
       'Fireplace',
@@ -91,7 +91,7 @@ export const offers:Offer[] = [
     price: 180,
     rating: 4.2,
     type: 'apartment',
-    city: cities[0],
+    city: CITIES[0],
     host: users[2],
     equipment: [
       'Wi-Fi',
@@ -128,7 +128,7 @@ export const offers:Offer[] = [
     price: 150,
     rating: 5,
     type: 'private room',
-    city: cities[1],
+    city: CITIES[1],
     host: users[3],
     equipment: [
       'Wi-Fi',

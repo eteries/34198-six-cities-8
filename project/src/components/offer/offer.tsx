@@ -18,6 +18,10 @@ function Offer(): JSX.Element {
     return <NotFound />;
   }
 
+  const nearestOffers = offers
+    .filter(({city, id: offerId}) => city.id === offer.city.id && offerId !== offer.id)
+    .slice(0, NEAREST_OFFERS_NUM);
+
   return (
     <div className="page">
       <header className="header">
@@ -151,7 +155,9 @@ function Offer(): JSX.Element {
           </div>
           <section className="property__map map" />
         </section>
-        <NearestOffers offers={offers} current={offer} max={NEAREST_OFFERS_NUM} />
+        {nearestOffers.length
+          ? <NearestOffers offers={nearestOffers} />
+          : null}
       </main>
     </div>
   );
