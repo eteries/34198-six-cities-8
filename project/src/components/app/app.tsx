@@ -6,12 +6,14 @@ import Favorites from '../favorites/favorites';
 import Offer from '../offer/offer';
 import { Routes } from '../../constants';
 import PrivateRoute from '../private-route/private-route';
+import { Offer as OfferType } from '../../types/offer';
 
 type appProps = {
-  offersNum: number
+  offersNum: number,
+  offers: OfferType[]
 };
 
-function App({offersNum}: appProps): JSX.Element {
+function App({offersNum, offers}: appProps): JSX.Element {
   return (
     <Router>
       <Switch>
@@ -19,15 +21,15 @@ function App({offersNum}: appProps): JSX.Element {
           <Login />
         </Route>
         <Route exact path={Routes.Favorites}>
-          <PrivateRoute isAuthorised={false}>
-            <Favorites />
+          <PrivateRoute isAuthorised>
+            <Favorites offers={offers} />
           </PrivateRoute>
         </Route>
         <Route exact path={Routes.OfferId}>
           <Offer />
         </Route>
         <Route exact path={Routes.Root}>
-          <Main offersNum={offersNum} />
+          <Main offersNum={offersNum} offers={offers} />
         </Route>
         <Route path='*'>
           <NotFound />

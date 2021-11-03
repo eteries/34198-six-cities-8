@@ -1,12 +1,14 @@
-import OfferCard from '../offer-card/offer-card';
 import Logo from '../Logo';
 import UserMenu from '../user-menu/user-menu';
+import { Offer } from '../../types/offer';
+import OffersList from '../offers-list/offers-list';
 
 type mainProps = {
-  offersNum: number
+  offersNum: number,
+  offers: Offer[]
 };
 
-function Main({offersNum}: mainProps): JSX.Element {
+function Main({offersNum, offers}: mainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -78,12 +80,7 @@ function Main({offersNum}: mainProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {new Array(offersNum)
-                  .fill(null)
-                  .map((item, index) => index)
-                  .map((id) => <OfferCard key={id} />)}
-              </div>
+              <OffersList offersNum={offersNum} offers={offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />
