@@ -4,11 +4,14 @@ import UserMenu from '../user-menu/user-menu';
 import NotFound from '../not-found/not-found';
 import ReviewForm from '../review-form/review-form';
 import NearestOffers from '../nearest-offers/nearest-offers';
+import Map from '../map/map';
 
 import Logo from '../Logo';
 import { offers } from '../../mocks/offers';
 import { convertRatingToPercent } from '../../utils/format-rating';
 import { NEAREST_OFFERS_NUM } from '../../constants';
+import { Point } from '../../types/point';
+import { CITIES } from '../../mocks/cities';
 
 function Offer(): JSX.Element {
   const {id} = useParams<{id?: string}>();
@@ -21,6 +24,9 @@ function Offer(): JSX.Element {
   const nearestOffers = offers
     .filter(({city, id: offerId}) => city.id === offer.city.id && offerId !== offer.id)
     .slice(0, NEAREST_OFFERS_NUM);
+
+  const nearestPoints = nearestOffers
+    .map(({location, id: pointID}):Point => ({location, id: pointID}));
 
   return (
     <div className="page">
@@ -153,7 +159,9 @@ function Offer(): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="property__map map" />
+          {nearestPoints.length
+            ? <Map area={CITIES[0]} points={nearestPoints} circle className="property__map" />
+            : null}
         </section>
         {nearestOffers.length
           ? <NearestOffers offers={nearestOffers} />

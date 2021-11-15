@@ -1,14 +1,15 @@
 import useMap from '../../hooks/use-map/use-map';
 import { useEffect, useRef } from 'react';
 import { City } from '../../types/city';
-import { Icons } from '../../constants';
-import { Icon, Marker } from 'leaflet';
+import { Icons, NEAREST_OFFERS_RADIUS } from '../../constants';
+import { Circle, Icon, Marker } from 'leaflet';
 import { Point } from '../../types/point';
 
 type MapProps = {
   area: City,
   points: Point[],
-  activePointID: number | null,
+  activePointID?: number | null,
+  circle?: boolean,
   className?: string
 }
 
@@ -20,7 +21,7 @@ function setIcon(id: string): Icon {
   });
 }
 
-function Map({area, points, activePointID, className=''}: MapProps): JSX.Element {
+function Map({area, points, activePointID = null, circle = false, className = ''}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, area);
   const defaultIcon = setIcon('Default');
@@ -34,12 +35,17 @@ function Map({area, points, activePointID, className=''}: MapProps): JSX.Element
         marker.setIcon((id === activePointID) ? activeIcon : defaultIcon);
 
         marker.addTo(map);
+
+        if (circle) {
+          const newCircle = new Circle(area.coords, {radius: NEAREST_OFFERS_RADIUS, opacity: 0.3});
+          newCircle.addTo(map);
+        }
       }
     });
   }, [map, points, activePointID]);
 
   return (
-    <section className={`map ${className}`} style={{height: '100%', width: '100%'}} ref={mapRef}>
+    <section className={`map ${className}`} style={{height: '100%', minHeight: '500px', width: '100%'}} ref={mapRef}>
     </section>
   );
 }
