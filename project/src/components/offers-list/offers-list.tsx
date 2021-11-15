@@ -5,11 +5,15 @@ import { useState } from 'react';
 type OfferListProps = {
   offersNum: number,
   offers: Offer[]
+  onActiveOfferChange: (id: number) => void
 }
 
-function OffersList({offersNum, offers}: OfferListProps): JSX.Element {
+function OffersList({offersNum, offers, onActiveOfferChange}: OfferListProps): JSX.Element {
   const [activeCardIndex, changeIndex] = useState(0);
-  const handleMouseOver = (id: number) => changeIndex(id);
+  const handleMouseOver = (id: number) => {
+    changeIndex(id);
+    onActiveOfferChange(id);
+  };
 
   return (
     <div className="cities__places-list places__list tabs__content">
