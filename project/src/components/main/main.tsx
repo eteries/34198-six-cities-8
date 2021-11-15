@@ -1,7 +1,11 @@
+import { useState } from 'react';
+
 import Logo from '../Logo';
 import UserMenu from '../user-menu/user-menu';
+import Map from '../map/map';
 import { Offer } from '../../types/offer';
 import OffersList from '../offers-list/offers-list';
+import { CITIES } from '../../mocks/cities';
 
 type mainProps = {
   offersNum: number,
@@ -9,6 +13,9 @@ type mainProps = {
 };
 
 function Main({offersNum, offers}: mainProps): JSX.Element {
+  const points = offers.map(({location, id}) => ({location, id}));
+  const [activePoint, setActivePoint] = useState<number | null>(null);
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -80,10 +87,10 @@ function Main({offersNum, offers}: mainProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OffersList offersNum={offersNum} offers={offers} />
+              <OffersList offersNum={offersNum} offers={offers} onActiveOfferChange={setActivePoint} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <Map area={CITIES[0]} points={points} activePointID={activePoint} className="cities__map"/>
             </div>
           </div>
         </div>

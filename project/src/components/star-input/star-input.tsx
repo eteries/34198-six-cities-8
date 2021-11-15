@@ -1,5 +1,5 @@
 import { RATINGS } from './ratings';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, Fragment } from 'react';
 
 type StarRatingProps = {
   name: string,
@@ -12,7 +12,7 @@ function StarInput({name, onChange}: StarRatingProps): JSX.Element {
       {RATINGS
         .sort((itemA, itemB) => itemB.id - itemA.id)
         .map(({id, label}) => (
-          <>
+          <Fragment key={id}>
             <input
               className="form__rating-input visually-hidden"
               name={name}
@@ -26,7 +26,7 @@ function StarInput({name, onChange}: StarRatingProps): JSX.Element {
                 <use xlinkHref="#icon-star" />
               </svg>
             </label>
-          </>
+          </Fragment>
         ))}
     </>
   );
