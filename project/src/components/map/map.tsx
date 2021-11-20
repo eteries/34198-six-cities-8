@@ -13,19 +13,19 @@ type MapProps = {
   className?: string
 }
 
-function setIcon(id: string): Icon {
-  return new Icon({
+const createIcon = (id: string): Icon => (
+  new Icon({
     iconUrl: Icons[id].URL,
     iconSize: Icons[id].Size,
     iconAnchor: Icons[id].Anchor,
-  });
-}
+  })
+);
 
 function Map({area, points, activePointID = null, circle = false, className = ''}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, area);
-  const defaultIcon = setIcon('Default');
-  const activeIcon = setIcon('Active');
+  const defaultIcon = createIcon('Default');
+  const activeIcon = createIcon('Active');
 
   useEffect(() => {
     points.forEach(({location, id})=> {
@@ -37,8 +37,8 @@ function Map({area, points, activePointID = null, circle = false, className = ''
         marker.addTo(map);
 
         if (circle) {
-          const newCircle = new Circle(area.coords, {radius: NEAREST_OFFERS_RADIUS, opacity: 0.3});
-          newCircle.addTo(map);
+          new Circle(area.coords, {radius: NEAREST_OFFERS_RADIUS, opacity: 0.3})
+            .addTo(map);
         }
       }
     });
