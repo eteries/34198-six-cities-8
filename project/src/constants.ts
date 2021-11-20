@@ -7,6 +7,15 @@ export const enum Routes {
   OfferId = '/offer/:id'
 }
 
+export const enum CityNames {
+  'Paris' = 'Paris',
+  'Amsterdam' = 'Amsterdam',
+  'Cologne' = 'Cologne',
+  'Brussels' = 'Brussels',
+  'Hamburg' = 'Hamburg',
+  'Dusseldorf' = 'Dusseldorf'
+}
+
 export const NEAREST_OFFERS_NUM = 3;
 
 export const NEAREST_OFFERS_RADIUS = 4000;

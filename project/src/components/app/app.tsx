@@ -29,7 +29,7 @@ function App({offersNum, offers}: appProps): JSX.Element {
           <Offer />
         </Route>
         <Route exact path={Routes.Root}>
-          <Main offersNum={offersNum} offers={offers} />
+          <Main offersNum={offersNum} />
         </Route>
         <Route path='*'>
           <NotFound />
