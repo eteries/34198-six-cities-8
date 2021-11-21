@@ -14,6 +14,14 @@ const reducer = (state = initialState, action: Action): Store => {
       return {...state, cityID: action.payload};
     case ActionTypes.LoadOffers:
       return {...state, offers: offers.filter(({city}) => city.id === action.payload)};
+    case ActionTypes.SortOffersByDefault:
+      return {...state, offers: offers.filter(({city}) => city.id === action.payload)};
+    case ActionTypes.SortOffersByPriceIncrement:
+      return {...state, offers: [...state.offers].sort((offerA, offerB) => offerA.price - offerB.price)};
+    case ActionTypes.SortOffersByPriceDecrement:
+      return {...state, offers: [...state.offers].sort((offerA, offerB) => offerB.price - offerA.price)};
+    case ActionTypes.SortOffersByRatingDecrement:
+      return {...state, offers: [...state.offers].sort((offerA, offerB) => offerB.rating - offerA.rating)};
     default:
       return state;
   }

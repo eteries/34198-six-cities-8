@@ -39,3 +39,10 @@ export const Icons: MapIcons = {
     Anchor: [13,39],
   },
 };
+
+export const enum Sortings {
+  Default = 'Popular',
+  PriceIncrement = 'Price: low to high',
+  PriceDecrement = 'Price: high to low',
+  RatingDecrement = 'Top rated first',
+}
