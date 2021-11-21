@@ -18,7 +18,7 @@ export const offers:Offer[] = [
     price: 120,
     rating: 4.8,
     type: 'apartment',
-    city: CITIES[0],
+    city: CITIES[3],
     host: users[0],
     equipment: [
       'Wi-Fi',
@@ -56,7 +56,7 @@ export const offers:Offer[] = [
     price: 80,
     rating: 4.7,
     type: 'studio',
-    city: CITIES[0],
+    city: CITIES[3],
     host: users[0],
     equipment: [
       'Fireplace',
@@ -91,7 +91,7 @@ export const offers:Offer[] = [
     price: 180,
     rating: 4.2,
     type: 'apartment',
-    city: CITIES[0],
+    city: CITIES[3],
     host: users[2],
     equipment: [
       'Wi-Fi',
@@ -128,7 +128,7 @@ export const offers:Offer[] = [
     price: 150,
     rating: 5,
     type: 'private room',
-    city: CITIES[1],
+    city: CITIES[0],
     host: users[3],
     equipment: [
       'Wi-Fi',
@@ -142,8 +142,8 @@ export const offers:Offer[] = [
       reviews[0],
     ],
     location: {
-      latitude: 52.3809553943508,
-      longitude: 4.939309666406198,
+      latitude: 48.8514850021,
+      longitude: 2.2974220101,
       zoom: 8,
     },
   },

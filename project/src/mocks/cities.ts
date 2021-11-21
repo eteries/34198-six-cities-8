@@ -5,8 +5,8 @@ export const CITIES: City[] = [
   {
     id: 1,
     name: CityNames.Paris,
-    coords: [52.38, 4.9],
-    zoom: 12,
+    coords: [48.85, 2.34],
+    zoom: 10,
   },
   {
     id: 2,
@@ -23,8 +23,8 @@ export const CITIES: City[] = [
   {
     id: 4,
     name: CityNames.Amsterdam,
-    coords: [52.22, 4.54],
-    zoom: 10,
+    coords: [52.38, 4.9],
+    zoom: 12,
   },
   {
     id: 5,

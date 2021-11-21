@@ -23,6 +23,8 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, area: City): Map |
   useEffect(() => {
     if(map === null && mapRef !== null) {
       setMap(init(mapRef.current as HTMLElement, area));
+    } else if (map !== null) {
+      map.setView(area.coords, area.zoom);
     }
   }, [map, mapRef, area]);
 

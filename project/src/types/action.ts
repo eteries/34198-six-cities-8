@@ -1,5 +1,3 @@
-import { Offer } from './offer';
-
 export const enum ActionTypes {
   'SwitchCity' = 'switchCity',
   'LoadOffers' = 'loadOffers',
@@ -12,7 +10,7 @@ export type switchCityAction = {
 
 export type loadOffersAction = {
   type: ActionTypes.LoadOffers,
-  payload: Offer[]
+  payload: number
 }
 
 export type Action = switchCityAction | loadOffersAction;

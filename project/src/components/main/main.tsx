@@ -13,15 +13,16 @@ type mainProps = {
   offersNum: number
 };
 
-const mapStateToProps = ({offers}: Store) => ({offers});
+const mapStateToProps = ({offers, cityID}: Store) => ({offers, cityID});
 
 const connector = connect(mapStateToProps);
 
 type connectedMainProps = mainProps & ConnectedProps<typeof connector>
 
-function Main({offersNum, offers}: connectedMainProps): JSX.Element {
-  const points = offers.map(({location, id}) => ({location, id}));
+function Main({offersNum, offers, cityID}: connectedMainProps): JSX.Element {
   const [activePoint, setActivePoint] = useState<number | null>(null);
+
+  const points = offers.map(({location, id}) => ({location, id}));
 
   return (
     <div className="page page--gray page--main">
@@ -61,7 +62,7 @@ function Main({offersNum, offers}: connectedMainProps): JSX.Element {
               <OffersList offersNum={offersNum} offers={offers} onActiveOfferChange={setActivePoint} />
             </section>
             <div className="cities__right-section">
-              <Map area={CITIES[0]} points={points} activePointID={activePoint} className="cities__map"/>
+              <Map area={CITIES[cityID - 1]} points={points} activePointID={activePoint} className="cities__map"/>
             </div>
           </div>
         </div>

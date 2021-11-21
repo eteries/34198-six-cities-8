@@ -1,14 +1,16 @@
 import { CITIES } from '../../mocks/cities';
 import { Dispatch } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+
 import { Store } from '../../types/store';
 import { Action } from '../../types/action';
-import { switchCity } from '../../store/action';
+import { loadOffers, switchCity } from '../../store/action';
 
 const mapStateToProps = ({cityID}: Store) => ({cityID});
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
-  onSwitchCity(id: number) {
-    dispatch(switchCity(id));
+  onSwitchCity(cityID: number) {
+    dispatch(switchCity(cityID));
+    dispatch(loadOffers(cityID));
   },
 });
 

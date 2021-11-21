@@ -2,7 +2,7 @@ import useMap from '../../hooks/use-map/use-map';
 import { useEffect, useRef } from 'react';
 import { City } from '../../types/city';
 import { Icons, NEAREST_OFFERS_RADIUS } from '../../constants';
-import { Circle, Icon, Marker } from 'leaflet';
+import { Circle, Icon, Marker, LayerGroup } from 'leaflet';
 import { Point } from '../../types/point';
 
 type MapProps = {
@@ -28,21 +28,31 @@ function Map({area, points, activePointID = null, circle = false, className = ''
   const activeIcon = createIcon('Active');
 
   useEffect(() => {
-    points.forEach(({location, id})=> {
-      if (map) {
-        const marker = new Marker([location.latitude, location.longitude]);
+    if (!map) {
+      return;
+    }
 
-        marker.setIcon((id === activePointID) ? activeIcon : defaultIcon);
+    if (circle) {
+      new Circle(area.coords, {radius: NEAREST_OFFERS_RADIUS, opacity: 0.3})
+        .addTo(map);
+    }
 
-        marker.addTo(map);
+    const markerGroup: LayerGroup<Marker> = new LayerGroup();
 
-        if (circle) {
-          new Circle(area.coords, {radius: NEAREST_OFFERS_RADIUS, opacity: 0.3})
-            .addTo(map);
-        }
-      }
+    points.forEach(({location, id}) => {
+      const marker = new Marker([location.latitude, location.longitude]);
+
+      marker.setIcon((id === activePointID) ? activeIcon : defaultIcon);
+
+      marker.addTo(markerGroup);
+      markerGroup.addTo(map);
     });
-  }, [map, points, activePointID]);
+
+    return () => {
+      markerGroup.clearLayers();
+    };
+
+  }, [points, area, circle]);
 
   return (
     <section className={`map ${className}`} style={{height: '100%', minHeight: '500px', width: '100%'}} ref={mapRef}>
