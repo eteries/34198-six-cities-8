@@ -8,6 +8,7 @@ import OffersList from '../offers-list/offers-list';
 import Cities from '../cities/cities';
 import { CITIES } from '../../mocks/cities';
 import { Store } from '../../types/store';
+import { City } from '../../types/city';
 
 type mainProps = {
   offersNum: number
@@ -23,6 +24,7 @@ function Main({offersNum, offers, cityID}: connectedMainProps): JSX.Element {
   const [activePoint, setActivePoint] = useState<number | null>(null);
 
   const points = offers.map(({location, id}) => ({location, id}));
+  const currentCity = CITIES.find(({id}) => id === cityID) as City;
 
   return (
     <div className="page page--gray page--main">
@@ -43,7 +45,7 @@ function Main({offersNum, offers, cityID}: connectedMainProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in {currentCity.name}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -62,7 +64,7 @@ function Main({offersNum, offers, cityID}: connectedMainProps): JSX.Element {
               <OffersList offersNum={offersNum} offers={offers} onActiveOfferChange={setActivePoint} />
             </section>
             <div className="cities__right-section">
-              <Map area={CITIES[cityID - 1]} points={points} activePointID={activePoint} className="cities__map"/>
+              <Map area={currentCity} points={points} activePointID={activePoint} className="cities__map"/>
             </div>
           </div>
         </div>

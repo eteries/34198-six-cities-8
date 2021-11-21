@@ -52,7 +52,7 @@ function Map({area, points, activePointID = null, circle = false, className = ''
       markerGroup.clearLayers();
     };
 
-  }, [points, area, circle]);
+  });
 
   return (
     <section className={`map ${className}`} style={{height: '100%', minHeight: '500px', width: '100%'}} ref={mapRef}>
