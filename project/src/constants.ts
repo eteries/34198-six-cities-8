@@ -46,3 +46,12 @@ export const enum Sortings {
   PriceDecrement = 'Price: high to low',
   RatingDecrement = 'Top rated first',
 }
+
+export const enum HttpCode {
+  Unauthorized = 401,
+}
+
+export const enum APIConfig {
+  BaseURL = 'https://8.react.pages.academy/six-cities',
+  Timeout = 5000
+}
